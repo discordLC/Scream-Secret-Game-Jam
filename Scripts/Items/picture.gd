@@ -1,15 +1,12 @@
 extends Sprite2D
 
-@export var sprite_frames : Array = []  
-@onready var sprite = $"."
+@export var sprite_textures: Array[Texture2D] = []
 
+# Called when the node enters the scene tree for the first time
 func _ready():
-	# Ensure there are sprite frames set
-	if sprite_frames.size() == 0:
-		push_error("No sprite frames set!")
-		return
-	
-	$Timer.start
+	_change_sprite()
 
-func _on_timer_timeout():
-	sprite.texture = sprite_frames[randi() % sprite_frames.size()]
+func _change_sprite():
+	if sprite_textures.size() > 0:
+		var random_index = randi() % sprite_textures.size()
+		texture = sprite_textures[random_index]
