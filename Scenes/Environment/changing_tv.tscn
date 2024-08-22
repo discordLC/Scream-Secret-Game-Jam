@@ -8,5 +8,6 @@
 texture_filter = 1
 position = Vector2(236, 169)
 scale = Vector2(9, 9)
+texture = ExtResource("2_euc2o")
 script = ExtResource("1_q7cmh")
 sprite_textures = Array[Texture2D]([ExtResource("2_euc2o"), ExtResource("2_euc2o"), ExtResource("2_euc2o"), ExtResource("2_euc2o"), ExtResource("2_euc2o"), ExtResource("3_mrifl")])

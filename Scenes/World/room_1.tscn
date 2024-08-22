@@ -1,3 +1,22 @@
-[gd_scene format=3 uid="uid://d3evodr7e3268"]
+[gd_scene load_steps=4 format=3 uid="uid://d3evodr7e3268"]
+
+[ext_resource type="PackedScene" uid="uid://bn6ndatau34gr" path="res://Scenes/Environment/changing_picture.tscn" id="1_cmt2h"]
+[ext_resource type="PackedScene" uid="uid://de0bl7qko5b6o" path="res://Scenes/Environment/changing_tv.tscn" id="2_8qgex"]
+[ext_resource type="PackedScene" uid="uid://buakxy8kmqr2d" path="res://Scenes/Environment/clickable_item.tscn" id="3_mond5"]
 
 [node name="Room_1" type="Node2D"]
+
+[node name="ClickableItem" parent="." instance=ExtResource("3_mond5")]
+z_index = 1
+position = Vector2(806, 571)
+
+[node name="ClickableItem2" parent="." instance=ExtResource("3_mond5")]
+z_index = 1
+position = Vector2(220, 567)
+item_type = 1
+
+[node name="Changing Picture" parent="." instance=ExtResource("1_cmt2h")]
+position = Vector2(501, 279)
+
+[node name="Changing_TV" parent="." instance=ExtResource("2_8qgex")]
+position = Vector2(959, 459)

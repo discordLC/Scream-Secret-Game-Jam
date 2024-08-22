@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://buakxy8kmqr2d"]
+
+[ext_resource type="Script" path="res://Scripts/Items/clickable_item.gd" id="1_qfxlm"]
+[ext_resource type="Texture2D" uid="uid://c0nc8ecse5pg3" path="res://icon.svg" id="2_y4mfx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0nvd"]
+size = Vector2(122, 120)
+
+[node name="ClickableItem" type="Area2D"]
+script = ExtResource("1_qfxlm")
+click_message = "Item Clicked"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_y4mfx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+shape = SubResource("RectangleShape2D_v0nvd")
