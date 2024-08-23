@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bn6ndatau34gr"]
 
-[ext_resource type="Script" path="res://Scripts/Items/sprite_manager.gd" id="1_xxxdb"]
+[ext_resource type="Script" path="res://Scripts/Managers/sprite_manager.gd" id="1_xxxdb"]
 [ext_resource type="Texture2D" uid="uid://4uuoej7qlxtm" path="res://Sprites/Placeholder/Picture.png" id="2_rhm7n"]
 [ext_resource type="Texture2D" uid="uid://cxk2seurhoyct" path="res://Sprites/Placeholder/Picture Change.png" id="3_5ljuc"]
 [ext_resource type="Texture2D" uid="uid://b3qeyqfclvfwr" path="res://Sprites/Placeholder/Picture Change Godot.png" id="4_fgnwi"]
