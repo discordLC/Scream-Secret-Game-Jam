@@ -1,0 +1,69 @@
+[gd_scene load_steps=2 format=3 uid="uid://1f3ff86bopyi"]
+
+[ext_resource type="Script" path="res://Scripts/Managers/inventory_ui.gd" id="1_y41u4"]
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 581.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y41u4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = -65.0
+offset_right = 1152.0
+offset_bottom = 97.0
+color = Color(0.197937, 0.197937, 0.197937, 1)
+
+[node name="InventorySlots" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.5
+offset_top = -40.0
+offset_right = 576.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InventorySlots"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Slot1" type="TextureRect" parent="InventorySlots"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="InventorySlots"]
+layout_mode = 2
+
+[node name="Slot2" type="TextureRect" parent="InventorySlots"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="InventorySlots"]
+layout_mode = 2
+
+[node name="Slot3" type="TextureRect" parent="InventorySlots"]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="InventorySlots"]
+layout_mode = 2
+
+[node name="Slot4" type="TextureRect" parent="InventorySlots"]
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="InventorySlots"]
+layout_mode = 2
+
+[node name="Slot5" type="TextureRect" parent="InventorySlots"]
+layout_mode = 2
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="InventorySlots"]
+layout_mode = 2
+size_flags_horizontal = 6

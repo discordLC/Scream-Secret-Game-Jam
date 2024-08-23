@@ -1,9 +1,7 @@
 extends Area2D
 
-enum ItemType {
-	KEYS,
-	WRENCH
-}
+# Reference the enum from the global script
+const ItemType = GlobalManager.ItemType
 
 var click_messages = {
 	ItemType.KEYS: "You clicked on the keys!",
@@ -16,22 +14,19 @@ var click_messages = {
 @export var click_message: String
 
 func _ready():
-	# Set the sprite based on the item type
 	match item_type:
 		ItemType.KEYS:
-			sprite.texture = preload("res://icon.svg")  # Make sure to use different textures for clarity because the icon cannot live forever
+			sprite.texture = preload("res://icon.svg")
 		ItemType.WRENCH:
 			sprite.texture = preload("res://icon.svg")
 	
-	# Set the click message based on the item type
 	click_message = click_messages.get(item_type, "Unknown item")
 	
-	# Check if this item has been collected before
 	if GlobalManager.collected_items.has(item_type):
 		queue_free()
 
 func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
-		print(click_message)
-		GlobalManager.collected_items[item_type] = true  # Mark this item as collected
+		if not GlobalManager.collected_items.has(item_type):
+			GlobalManager.add_item_to_inventory(item_type)  # Add item to inventory
 		queue_free()

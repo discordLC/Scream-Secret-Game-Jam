@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalManager="*res://Scripts/Managers/global_manager.gd"
+InventoryUi="*res://Scenes/World/inventory_ui.tscn"
 
 [display]
 

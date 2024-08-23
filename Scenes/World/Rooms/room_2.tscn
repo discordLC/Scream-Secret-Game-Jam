@@ -10,14 +10,14 @@
 [node name="Enviroment" type="Node2D" parent="."]
 
 [node name="Changing Picture" parent="Enviroment" instance=ExtResource("2_awq1x")]
-position = Vector2(932, 316)
+position = Vector2(876, 109)
 
 [node name="Changing_TV" parent="Enviroment" instance=ExtResource("1_nc1qb")]
-position = Vector2(642, 448)
+position = Vector2(642, 364)
 
 [node name="ClickableItem" parent="Enviroment" instance=ExtResource("3_t6c4s")]
-position = Vector2(487, 463)
+position = Vector2(462, 381)
 
 [node name="Door" parent="Enviroment" instance=ExtResource("5_783nn")]
-position = Vector2(1151, 481)
+position = Vector2(1133, 352)
 target_scene = "res://Scenes/World/Rooms/room_1.tscn"
