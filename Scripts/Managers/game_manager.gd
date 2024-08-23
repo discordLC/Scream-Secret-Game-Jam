@@ -21,6 +21,3 @@ func update_aspect_ratio():
 		# Screen is taller than the target aspect ratio
 		var new_height = int(screen_size.x / target_aspect)
 		viewport.size = Vector2i(int(screen_size.x), new_height)
-
-	# Ensure viewport size is properly updated with integer values
-	viewport.size = Vector2i(viewport.size.x, viewport.size.y)

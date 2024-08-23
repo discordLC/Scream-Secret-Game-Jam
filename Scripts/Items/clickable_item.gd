@@ -25,11 +25,8 @@ func _ready():
 
 	# Set the click message based on the item type
 	click_message = click_messages.get(item_type, "Unknown item")
-	
-	# Connecting Area2D to itself through code in _ready() rather than creating more work through Node :D
-	self.input_event.connect(_on_input_event)
 
-func _on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int):
+func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		print(click_message)
 		queue_free()
