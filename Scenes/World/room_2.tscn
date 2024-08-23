@@ -1,12 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwddgwrfk83d3"]
+[gd_scene load_steps=6 format=3 uid="uid://dwddgwrfk83d3"]
 
-[ext_resource type="Script" path="res://Scripts/Managers/game_manager.gd" id="1_h0g4e"]
 [ext_resource type="PackedScene" uid="uid://de0bl7qko5b6o" path="res://Scenes/Environment/changing_tv.tscn" id="1_nc1qb"]
 [ext_resource type="PackedScene" uid="uid://bn6ndatau34gr" path="res://Scenes/Environment/changing_picture.tscn" id="2_awq1x"]
 [ext_resource type="PackedScene" uid="uid://buakxy8kmqr2d" path="res://Scenes/Environment/clickable_item.tscn" id="3_t6c4s"]
+[ext_resource type="PackedScene" uid="uid://di3t6mulylhuc" path="res://Scenes/Environment/door.tscn" id="5_783nn"]
+[ext_resource type="PackedScene" uid="uid://d3evodr7e3268" path="res://Scenes/World/room_1.tscn" id="6_8jayq"]
 
 [node name="Room_2" type="Node2D"]
-script = ExtResource("1_h0g4e")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(1920, 1080)
@@ -30,3 +30,7 @@ position = Vector2(981, 560)
 z_index = 1
 position = Vector2(299, 207)
 item_type = 1
+
+[node name="Door" parent="Environment" instance=ExtResource("5_783nn")]
+position = Vector2(80, 4)
+target_scene = ExtResource("6_8jayq")
