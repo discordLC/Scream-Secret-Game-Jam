@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d4hyuavqc6p2r" path="res://Sprites/Placeholder/TV OFF.png" id="2_euc2o"]
 [ext_resource type="Texture2D" uid="uid://b7euw7033dhck" path="res://Sprites/Placeholder/TV ON.png" id="3_mrifl"]
 
-[node name="Changing_TV" type="Sprite2D"]
+[node name="ChangingTV" type="Sprite2D"]
 texture_filter = 1
 position = Vector2(236, 169)
 scale = Vector2(9, 9)

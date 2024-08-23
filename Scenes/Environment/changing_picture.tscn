@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cxk2seurhoyct" path="res://Sprites/Placeholder/Picture Change.png" id="3_5ljuc"]
 [ext_resource type="Texture2D" uid="uid://b3qeyqfclvfwr" path="res://Sprites/Placeholder/Picture Change Godot.png" id="4_fgnwi"]
 
-[node name="Changing Picture" type="Sprite2D"]
+[node name="ChangingPicture" type="Sprite2D"]
 texture_filter = 1
 position = Vector2(328, 190)
 scale = Vector2(9, 9)
