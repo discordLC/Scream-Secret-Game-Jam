@@ -1,3 +1,4 @@
+# res://Scripts/Managers/sprite_manager.gd
 extends Sprite2D
 
 @export var sprite_textures: Array[Texture2D] = []

@@ -1,3 +1,4 @@
+# res://Scripts/Items/clickable_item.gd
 extends Area2D
 
 # Reference the enum from the global script
@@ -17,6 +18,7 @@ func _ready():
 	match item_type:
 		ItemType.KEYS:
 			sprite.texture = preload("res://icon.svg")
+			# sprite.texture = preload("res://icon." + str(item_type) + ".png")
 		ItemType.WRENCH:
 			sprite.texture = preload("res://icon.svg")
 	
@@ -29,4 +31,5 @@ func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		if not GlobalManager.collected_items.has(item_type):
 			GlobalManager.add_item_to_inventory(item_type)  # Add item to inventory
+			print(click_message)
 		queue_free()
