@@ -2,25 +2,44 @@
 extends Control
 
 const NUM_SLOTS = 5
-
 var slots: Array = []
+var selected_item: int = -1  # -1 represents no selection
+
+@onready var ItemType = GlobalManager.ItemType
 
 func _ready():
-	# Ensure slots are properly initialized
+	# Initialize inventory slots
 	for i in range(NUM_SLOTS):
-		var slot = $InventorySlots.get_node("Slot" + str(i + 1))
+		var slot = $InventorySlots.get_node("Slot" + str(i + 1)) as TextureButton
 		if slot:
 			slots.append(slot)
-			slot.texture = preload("res://Sprites/empty slot texture.png")
+			slot.texture_normal = preload("res://Sprites/empty slot texture.png")
+			slot.connect("pressed", Callable(self, "_on_slot_pressed").bind(i))
 		else:
 			print("Slot not found: Slot" + str(i + 1))
 
 func update_inventory(items: Dictionary) -> void:
-	# Ensure items have valid indices before accessing
 	for i in range(NUM_SLOTS):
 		if i < items.size():
 			var item = items.keys()[i]
-			slots[i].texture = preload("res://icon.svg")
+			slots[i].texture_normal = preload("res://icon.svg")  # Update with the item icon
 		else:
 			if i < slots.size():
-				slots[i].texture = preload("res://Sprites/empty slot texture.png")
+				slots[i].texture_normal = preload("res://Sprites/empty slot texture.png")
+
+func _on_slot_pressed(slot_index: int):
+	if selected_item == -1:
+		if slot_index < slots.size():
+			selected_item = GlobalManager.collected_items.keys()[slot_index]
+			print("Selected item: %s" % selected_item)
+	else:
+		if GlobalManager.current_interactable:
+			var success = GlobalManager.current_interactable.use_item(selected_item)
+			if success:
+				GlobalManager.remove_item_from_inventory(selected_item)
+				selected_item = -1  # Deselect item after use
+			else:
+				print("Item cannot be used here")
+		else:
+			print("No interactable selected")
+			selected_item = -1  # Deselect item if no interactable

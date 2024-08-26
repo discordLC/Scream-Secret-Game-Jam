@@ -18,7 +18,6 @@ position = Vector2(917, 367)
 
 [node name="ClickableItem" parent="Enviroment" instance=ExtResource("3_mond5")]
 position = Vector2(744, 397)
-item_type = 0
 
 [node name="ClickableItem2" parent="Enviroment" instance=ExtResource("3_mond5")]
 position = Vector2(270, 303)

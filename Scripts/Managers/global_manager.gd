@@ -2,6 +2,7 @@
 extends Node2D
 
 var collected_items: Dictionary = {}
+var current_interactable: Area2D = null
 
 @onready var inventory_ui = InventoryUi  # Accessing the autoloaded InventoryUI
 const MAX_INVENTORY_SIZE = 5
@@ -26,12 +27,26 @@ func update_inventory_ui() -> void:
 	if inventory_ui:
 		inventory_ui.update_inventory(collected_items)
 
-func add_item_to_inventory(item_type: ItemType) -> void:
+func add_item_to_inventory(item_type: int) -> void:
 	if collected_items.size() < MAX_INVENTORY_SIZE:
 		collected_items[item_type] = true
 		update_inventory_ui()
 	else:
 		print("Inventory is full")
+
+func remove_item_from_inventory(item_type: int) -> void:
+	if collected_items.has(item_type):
+		collected_items.erase(item_type)
+		update_inventory_ui()
+
+func set_current_interactable(interactable: Area2D) -> void:
+	current_interactable = interactable
+
+func use_item_on_interactable(item_type: int) -> void:
+	if current_interactable:
+		current_interactable.use_item(item_type)
+		# Clear current interactable after use
+		current_interactable = null
 
 func transition_to_scene(scene_path: String) -> void:
 	var scene = load(scene_path) as PackedScene

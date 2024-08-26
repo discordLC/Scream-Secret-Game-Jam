@@ -37,31 +37,31 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="Slot1" type="TextureRect" parent="InventorySlots"]
+[node name="Slot1" type="TextureButton" parent="InventorySlots"]
 layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="InventorySlots"]
 layout_mode = 2
 
-[node name="Slot2" type="TextureRect" parent="InventorySlots"]
+[node name="Slot2" type="TextureButton" parent="InventorySlots"]
 layout_mode = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="InventorySlots"]
 layout_mode = 2
 
-[node name="Slot3" type="TextureRect" parent="InventorySlots"]
+[node name="Slot3" type="TextureButton" parent="InventorySlots"]
 layout_mode = 2
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="InventorySlots"]
 layout_mode = 2
 
-[node name="Slot4" type="TextureRect" parent="InventorySlots"]
+[node name="Slot4" type="TextureButton" parent="InventorySlots"]
 layout_mode = 2
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="InventorySlots"]
 layout_mode = 2
 
-[node name="Slot5" type="TextureRect" parent="InventorySlots"]
+[node name="Slot5" type="TextureButton" parent="InventorySlots"]
 layout_mode = 2
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="InventorySlots"]
