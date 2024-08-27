@@ -4,7 +4,7 @@ extends Node2D
 var collected_items: Dictionary = {}
 var current_interactable: Area2D = null
 
-@onready var inventory_ui = InventoryUi  # Accessing the autoloaded InventoryUI
+@onready var inventory_ui = InventoryUi
 const MAX_INVENTORY_SIZE = 5
 
 enum ItemType {
@@ -51,7 +51,6 @@ func use_item_on_interactable(item_type: int) -> bool:
 		current_interactable = null
 		return success
 	return false
-
 
 func transition_to_scene(scene_path: String) -> void:
 	var scene = load(scene_path) as PackedScene

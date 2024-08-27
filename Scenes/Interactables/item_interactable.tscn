@@ -1,22 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://w3cp5vhwwqp"]
+[gd_scene load_steps=3 format=3 uid="uid://w3cp5vhwwqp"]
 
-[ext_resource type="Texture2D" uid="uid://c0nc8ecse5pg3" path="res://icon.svg" id="1_6s066"]
 [ext_resource type="Script" path="res://Scripts/Items/interactable.gd" id="1_7dquv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7a4p"]
-size = Vector2(256, 42)
+size = Vector2(93, 42)
 
-[node name="Area2D" type="Area2D"]
+[node name="ItemInteractable" type="Area2D"]
 script = ExtResource("1_7dquv")
 required_item_type = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2, 13)
-scale = Vector2(2, 0.3125)
-texture = ExtResource("1_6s066")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 13)
 shape = SubResource("RectangleShape2D_h7a4p")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

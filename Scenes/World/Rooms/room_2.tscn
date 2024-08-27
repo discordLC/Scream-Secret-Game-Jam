@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://de0bl7qko5b6o" path="res://Scenes/Environment/changing_tv.tscn" id="1_nc1qb"]
 [ext_resource type="PackedScene" uid="uid://bn6ndatau34gr" path="res://Scenes/Environment/changing_picture.tscn" id="2_awq1x"]
-[ext_resource type="PackedScene" uid="uid://buakxy8kmqr2d" path="res://Scenes/Environment/clickable_item.tscn" id="3_t6c4s"]
-[ext_resource type="PackedScene" uid="uid://di3t6mulylhuc" path="res://Scenes/Environment/door.tscn" id="5_783nn"]
+[ext_resource type="PackedScene" uid="uid://buakxy8kmqr2d" path="res://Scenes/Interactables/clickable_item.tscn" id="3_t6c4s"]
+[ext_resource type="PackedScene" uid="uid://di3t6mulylhuc" path="res://Scenes/Interactables/door.tscn" id="5_783nn"]
 
 [node name="Room2" type="Node2D"]
 
