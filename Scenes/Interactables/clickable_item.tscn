@@ -11,6 +11,7 @@ script = ExtResource("1_qfxlm")
 click_message = "Item Clicked"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.19209e-06, 4.76837e-07)
 texture = ExtResource("2_y4mfx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

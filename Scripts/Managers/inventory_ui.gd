@@ -13,7 +13,7 @@ func _ready():
 		var slot = $InventorySlots.get_node("Slot" + str(i + 1)) as TextureButton
 		if slot:
 			slots.append(slot)
-			slot.texture_normal = preload("res://Sprites/empty slot texture.png")
+			slot.texture_normal = load("res://Sprites/empty slot texture.png")  # Changed to load()
 			slot.connect("pressed", Callable(self, "_on_slot_pressed").bind(i))
 		else:
 			print("Slot not found: Slot" + str(i + 1))
@@ -22,10 +22,12 @@ func update_inventory(items: Dictionary) -> void:
 	for i in range(NUM_SLOTS):
 		if i < items.size():
 			var item = items.keys()[i]
-			slots[i].texture_normal = preload("res://icon.svg")  # Update with the item icon
+			# var icon_path = "res://Sprites/icon." + str(item) + ".png"  # Assuming item type is a valid string here
+			var icon_path = "res://icon.svg"
+			slots[i].texture_normal = load(icon_path)  # Changed to load()
 		else:
 			if i < slots.size():
-				slots[i].texture_normal = preload("res://Sprites/empty slot texture.png")
+				slots[i].texture_normal = load("res://Sprites/empty slot texture.png")  # Changed to load()
 
 func _on_slot_pressed(slot_index: int):
 	if slot_index < GlobalManager.collected_items.size():

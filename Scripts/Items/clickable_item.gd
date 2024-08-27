@@ -18,7 +18,6 @@ func _ready():
 	match item_type:
 		ItemType.KEYS:
 			sprite.texture = preload("res://icon.svg")
-			# sprite.texture = preload("res://icon." + str(item_type) + ".png")
 		ItemType.WRENCH:
 			sprite.texture = preload("res://icon.svg")
 	
