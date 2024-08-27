@@ -28,18 +28,18 @@ func update_inventory(items: Dictionary) -> void:
 				slots[i].texture_normal = preload("res://Sprites/empty slot texture.png")
 
 func _on_slot_pressed(slot_index: int):
-	if selected_item == -1:
-		if slot_index < slots.size():
+	if slot_index < GlobalManager.collected_items.size():
+		if selected_item == -1:
 			selected_item = GlobalManager.collected_items.keys()[slot_index]
 			print("Selected item: %s" % selected_item)
-	else:
-		if GlobalManager.current_interactable:
-			var success = GlobalManager.current_interactable.use_item(selected_item)
-			if success:
-				GlobalManager.remove_item_from_inventory(selected_item)
-				selected_item = -1  # Deselect item after use
-			else:
-				print("Item cannot be used here")
 		else:
-			print("No interactable selected")
-			selected_item = -1  # Deselect item if no interactable
+			if GlobalManager.current_interactable:
+				var success = GlobalManager.use_item_on_interactable(selected_item)
+				print("Interaction success: %s" % success)
+				if success:
+					selected_item = -1
+				else:
+					print("Item cannot be used here")
+			else:
+				print("No interactable selected")
+				selected_item = -1

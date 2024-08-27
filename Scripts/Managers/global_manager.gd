@@ -41,12 +41,17 @@ func remove_item_from_inventory(item_type: int) -> void:
 
 func set_current_interactable(interactable: Area2D) -> void:
 	current_interactable = interactable
+	print("Current interactable set to: %s" % current_interactable.name)
 
-func use_item_on_interactable(item_type: int) -> void:
+func use_item_on_interactable(item_type: int) -> bool:
 	if current_interactable:
-		current_interactable.use_item(item_type)
-		# Clear current interactable after use
+		var success = current_interactable.use_item(item_type)
+		if success:
+			remove_item_from_inventory(item_type)
 		current_interactable = null
+		return success
+	return false
+
 
 func transition_to_scene(scene_path: String) -> void:
 	var scene = load(scene_path) as PackedScene
