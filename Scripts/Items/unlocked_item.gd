@@ -1,3 +1,4 @@
+# res://Scripts/Items/unlocked_item.gd
 extends Area2D
 
 var scene_path: String = "res://Scenes/World/Rooms/room_2.tscn"

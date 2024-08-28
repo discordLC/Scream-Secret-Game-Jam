@@ -1,8 +1,9 @@
 # res://Scripts/Managers/global_manager.gd
 extends Node2D
 
-var collected_items: Dictionary = {}
-var unlocked_items: Dictionary = {}  # { "scene_name": [item_data, ...] }
+var collected_items: Dictionary = {}  # Inventory
+var used_items: Dictionary = {}  # Track used items
+var unlocked_items: Dictionary = {}  # Track unlocked items
 var current_interactable: Area2D = null
 
 @onready var inventory_ui = InventoryUi
@@ -56,6 +57,7 @@ func use_item_on_interactable(item_type: int) -> bool:
 		var success = current_interactable.use_item(item_type)
 		if success:
 			remove_item_from_inventory(item_type)
+			used_items[item_type] = true  # Track the item as used
 		current_interactable = null
 		return success
 	return false

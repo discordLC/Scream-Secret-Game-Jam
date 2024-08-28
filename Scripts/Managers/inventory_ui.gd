@@ -1,3 +1,4 @@
+# res://Scripts/Managers/inventory_ui.gd
 extends Control
 
 const NUM_SLOTS = 5

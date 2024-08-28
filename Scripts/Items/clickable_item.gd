@@ -1,3 +1,4 @@
+# res://Scripts/Items/clickable_item.gd
 extends Area2D
 
 const ItemType = GlobalManager.ItemType
@@ -22,12 +23,12 @@ func _ready():
 	
 	click_message = click_messages.get(item_type, "Unknown item")
 	
-	if GlobalManager.collected_items.has(item_type):
+	if GlobalManager.collected_items.has(item_type) or GlobalManager.used_items.has(item_type):
 		queue_free()
 
 func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
-		if not GlobalManager.collected_items.has(item_type):
+		if not GlobalManager.collected_items.has(item_type) and not GlobalManager.used_items.has(item_type):
 			GlobalManager.add_item_to_inventory(item_type)
 			print(click_message)
 		queue_free()

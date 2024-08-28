@@ -1,3 +1,4 @@
+# res://Scripts/Items/interactable.gd
 extends Area2D
 
 @export var required_item_type: int = -1
