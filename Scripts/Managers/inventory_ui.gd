@@ -5,6 +5,7 @@ var slots: Array = []
 var selected_item: int = -1  # -1 represents no selection
 
 @onready var click_sound_player = $AudioStreamPlayer2D  # Adjust the path according to your scene setup
+@onready var hover_material: ShaderMaterial = preload("res://Materials/Shader/outline.tres")  # Path to your shader material
 
 func _ready():
 	# Initialize inventory slots
@@ -14,6 +15,9 @@ func _ready():
 			slots.append(slot)
 			slot.texture_normal = load("res://Sprites/empty slot texture.png")  # Changed to load()
 			slot.connect("pressed", Callable(self, "_on_slot_pressed").bind(i))
+			# Connect mouse enter and exit signals
+			slot.connect("mouse_entered", Callable(self, "_on_slot_mouse_entered").bind(slot))
+			slot.connect("mouse_exited", Callable(self, "_on_slot_mouse_exited").bind(slot))
 		else:
 			print("Slot not found: Slot" + str(i + 1))
 
@@ -21,7 +25,6 @@ func update_inventory(items: Dictionary) -> void:
 	for i in range(NUM_SLOTS):
 		if i < items.size():
 			var _item = items.keys()[i]
-			# var icon_path = "res://Sprites/icon." + str(item) + ".png"  # Assuming item type is a valid string here
 			var icon_path = "res://icon.svg"
 			slots[i].texture_normal = load(icon_path)  # Changed to load()
 		else:
@@ -46,3 +49,9 @@ func _on_slot_pressed(slot_index: int):
 			else:
 				print("No interactable selected")
 				selected_item = -1
+
+func _on_slot_mouse_entered(slot: TextureButton):
+	slot.material = hover_material
+
+func _on_slot_mouse_exited(slot: TextureButton):
+	slot.material = null
