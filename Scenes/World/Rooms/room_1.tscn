@@ -29,9 +29,4 @@ target_scene = "res://Scenes/World/Rooms/room_2.tscn"
 
 [node name="ItemInteractable" parent="Enviroment" instance=ExtResource("5_o8dwg")]
 position = Vector2(895, 174)
-open_door_scene_path = "res://Scenes/Interactables/door.tscn"
-
-[node name="ItemInteractable2" parent="Enviroment" instance=ExtResource("5_o8dwg")]
-position = Vector2(353, 72)
-required_item_type = 1
-open_door_scene_path = "res://Scenes/Interactables/door.tscn"
+unlocked_item_scene_path = "res://Scenes/Interactables/unlocked_item.tscn"

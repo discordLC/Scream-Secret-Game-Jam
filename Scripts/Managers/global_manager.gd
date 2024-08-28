@@ -2,6 +2,7 @@
 extends Node2D
 
 var collected_items: Dictionary = {}
+var unlocked_items: Dictionary = {}  # { "scene_name": [item_data, ...] }
 var current_interactable: Area2D = null
 
 @onready var inventory_ui = InventoryUi
@@ -18,9 +19,16 @@ func _ready():
 		update_inventory_ui()
 
 func update_items_based_on_global_state():
-	for item in get_tree().get_nodes_in_group("items"):
-		if item is Area2D and collected_items.has(item.item_type):
-			item.queue_free()
+	var current_scene_name = get_tree().current_scene.name
+	if unlocked_items.has(current_scene_name):
+		for item_data in unlocked_items[current_scene_name]:
+			var unlocked_item_scene = load(item_data["scene_path"]) as PackedScene
+			if unlocked_item_scene:
+				var new_item_instance = unlocked_item_scene.instantiate()
+				if new_item_instance:
+					new_item_instance.position = item_data["position"]
+					new_item_instance.rotation = item_data["rotation"]
+					get_tree().current_scene.add_child(new_item_instance)
 	update_inventory_ui()
 
 func update_inventory_ui() -> void:
@@ -52,6 +60,16 @@ func use_item_on_interactable(item_type: int) -> bool:
 		return success
 	return false
 
+func register_unlocked_item(interactable: Area2D, scene_path: String, position: Vector2, rotation: float) -> void:
+	var current_scene_name = get_tree().current_scene.name
+	if not unlocked_items.has(current_scene_name):
+		unlocked_items[current_scene_name] = []
+	unlocked_items[current_scene_name].append({
+		"scene_path": scene_path,
+		"position": position,
+		"rotation": rotation
+	})
+
 func transition_to_scene(scene_path: String) -> void:
 	var scene = load(scene_path) as PackedScene
 	if scene:
@@ -60,5 +78,6 @@ func transition_to_scene(scene_path: String) -> void:
 		tree.root.add_child(new_scene_instance)
 		tree.current_scene.queue_free()
 		tree.current_scene = new_scene_instance
+		update_items_based_on_global_state()
 	else:
 		print("Scene not found: %s" % scene_path)

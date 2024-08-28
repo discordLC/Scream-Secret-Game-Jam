@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://sdn61lq0ohjh"]
+
+[ext_resource type="Script" path="res://Scripts/Items/unlocked_item.gd" id="1_uphle"]
+[ext_resource type="Texture2D" uid="uid://c0nc8ecse5pg3" path="res://icon.svg" id="2_wi1u0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8osdv"]
+size = Vector2(130, 330)
+
+[node name="UnlockedItem" type="Area2D"]
+script = ExtResource("1_uphle")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 2.58594)
+texture = ExtResource("2_wi1u0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8osdv")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
