@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://odaiym4qrdkq"]
+[gd_scene load_steps=4 format=3 uid="uid://odaiym4qrdkq"]
 
 [ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_tihr8"]
+[ext_resource type="Material" uid="uid://nw6r6oqhvgpf" path="res://Materials/Shader/outline.tres" id="2_riggo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4ock"]
 size = Vector2(128, 127)
@@ -9,6 +10,7 @@ size = Vector2(128, 127)
 script = ExtResource("1_tihr8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_riggo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
@@ -18,3 +20,5 @@ shape = SubResource("RectangleShape2D_q4ock")
 one_shot = true
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

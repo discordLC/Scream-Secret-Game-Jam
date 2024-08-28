@@ -11,22 +11,22 @@
 [node name="Enviroment" type="Node2D" parent="."]
 
 [node name="Changing Picture" parent="Enviroment" instance=ExtResource("1_cmt2h")]
-position = Vector2(594, 183)
+position = Vector2(1174, 589)
 
 [node name="Changing_TV" parent="Enviroment" instance=ExtResource("2_8qgex")]
-position = Vector2(917, 367)
+position = Vector2(1734, 697)
 
 [node name="ClickableItem" parent="Enviroment" instance=ExtResource("3_mond5")]
-position = Vector2(744, 397)
+position = Vector2(1465, 684)
 
 [node name="ClickableItem2" parent="Enviroment" instance=ExtResource("3_mond5")]
-position = Vector2(270, 303)
+position = Vector2(734, 648)
 item_type = 1
 
 [node name="Door" parent="Enviroment" instance=ExtResource("5_vtjna")]
-position = Vector2(36, 349)
+position = Vector2(299, 714)
 target_scene = "res://Scenes/World/Rooms/room_2.tscn"
 
 [node name="ItemInteractable" parent="Enviroment" instance=ExtResource("5_o8dwg")]
-position = Vector2(895, 174)
+position = Vector2(959, 567)
 unlocked_item_scene_path = "res://Scenes/Interactables/unlocked_item.tscn"

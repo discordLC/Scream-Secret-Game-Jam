@@ -1,7 +1,5 @@
-# res://Scripts/Items/clickable_item.gd
 extends Area2D
 
-# Reference the enum from the global script
 const ItemType = GlobalManager.ItemType
 
 var click_messages = {
@@ -10,6 +8,7 @@ var click_messages = {
 }
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var hover_material: ShaderMaterial = preload("res://Materials/Shader/outline.tres")
 
 @export var item_type: ItemType
 @export var click_message: String
@@ -29,6 +28,12 @@ func _ready():
 func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		if not GlobalManager.collected_items.has(item_type):
-			GlobalManager.add_item_to_inventory(item_type)  # Add item to inventory
+			GlobalManager.add_item_to_inventory(item_type)
 			print(click_message)
 		queue_free()
+
+func _on_mouse_entered():
+	sprite.material = hover_material
+
+func _on_mouse_exited():
+	sprite.material = null

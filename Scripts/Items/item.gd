@@ -5,10 +5,10 @@ extends Area2D
 @export var clicked_texture: Texture2D
 
 @onready var timer: Timer = $SpriteChangeTimer
+@onready var hover_material: ShaderMaterial = preload("res://Materials/Shader/outline.tres")
 
 var is_clicked = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$Sprite2D.texture = default_texture
 	timer.one_shot = true
@@ -26,3 +26,9 @@ func _change_sprite():
 func _reset_sprite():
 	$Sprite2D.texture = default_texture
 	is_clicked = false
+
+func _on_mouse_entered():
+	$Sprite2D.material = hover_material
+
+func _on_mouse_exited():
+	$Sprite2D.material = null

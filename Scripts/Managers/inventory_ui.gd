@@ -1,11 +1,10 @@
-# res://Scripts/Managers/inventory_ui.gd
 extends Control
 
 const NUM_SLOTS = 5
 var slots: Array = []
 var selected_item: int = -1  # -1 represents no selection
 
-@onready var ItemType = GlobalManager.ItemType
+@onready var click_sound_player = $AudioStreamPlayer2D  # Adjust the path according to your scene setup
 
 func _ready():
 	# Initialize inventory slots
@@ -21,7 +20,7 @@ func _ready():
 func update_inventory(items: Dictionary) -> void:
 	for i in range(NUM_SLOTS):
 		if i < items.size():
-			var item = items.keys()[i]
+			var _item = items.keys()[i]
 			# var icon_path = "res://Sprites/icon." + str(item) + ".png"  # Assuming item type is a valid string here
 			var icon_path = "res://icon.svg"
 			slots[i].texture_normal = load(icon_path)  # Changed to load()
@@ -34,6 +33,8 @@ func _on_slot_pressed(slot_index: int):
 		if selected_item == -1:
 			selected_item = GlobalManager.collected_items.keys()[slot_index]
 			print("Selected item: %s" % selected_item)
+			# Play click sound
+			click_sound_player.play()
 		else:
 			if GlobalManager.current_interactable:
 				var success = GlobalManager.use_item_on_interactable(selected_item)

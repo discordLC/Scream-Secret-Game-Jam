@@ -1,4 +1,3 @@
-# res://Scripts/Objects/interactable.gd
 extends Area2D
 
 @export var required_item_type: int = -1
@@ -6,6 +5,7 @@ extends Area2D
 var unlocked: bool = false
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var hover_material: ShaderMaterial = preload("res://Materials/Shader/outline.tres")
 
 var sprite_for_keys: Texture2D = preload("res://icon.svg")
 var sprite_for_wrench: Texture2D = preload("res://Sprites/Placeholder/Picture.png")
@@ -72,3 +72,9 @@ func change_to_unlocked_item_scene() -> void:
 			print("Open door scene not found: %s" % unlocked_item_scene_path)
 	else:
 		print("Open door scene path is not set")
+
+func _on_mouse_entered():
+	sprite.material = hover_material
+
+func _on_mouse_exited():
+	sprite.material = null

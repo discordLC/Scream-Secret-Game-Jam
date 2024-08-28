@@ -60,7 +60,7 @@ func use_item_on_interactable(item_type: int) -> bool:
 		return success
 	return false
 
-func register_unlocked_item(interactable: Area2D, scene_path: String, position: Vector2, rotation: float) -> void:
+func register_unlocked_item(_interactable: Area2D, scene_path: String, position: Vector2, rotation: float) -> void:
 	var current_scene_name = get_tree().current_scene.name
 	if not unlocked_items.has(current_scene_name):
 		unlocked_items[current_scene_name] = []

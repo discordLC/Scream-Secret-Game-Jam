@@ -1,22 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://1f3ff86bopyi"]
+[gd_scene load_steps=3 format=3 uid="uid://1f3ff86bopyi"]
 
 [ext_resource type="Script" path="res://Scripts/Managers/inventory_ui.gd" id="1_y41u4"]
+[ext_resource type="AudioStream" uid="uid://heeaujrcqq5y" path="res://Audio/SFX/Click.mp3" id="2_4m4qs"]
 
 [node name="InventoryUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 581.0
+offset_top = 943.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y41u4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_top = -65.0
-offset_right = 1152.0
-offset_bottom = 97.0
+offset_left = -8.0
+offset_top = 6.0
+offset_right = 1923.0
+offset_bottom = 168.0
 color = Color(0.197937, 0.197937, 0.197937, 1)
 
 [node name="InventorySlots" type="HBoxContainer" parent="."]
@@ -67,3 +69,7 @@ layout_mode = 2
 [node name="HBoxContainer6" type="HBoxContainer" parent="InventorySlots"]
 layout_mode = 2
 size_flags_horizontal = 6
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_4m4qs")
+volume_db = 15.0
