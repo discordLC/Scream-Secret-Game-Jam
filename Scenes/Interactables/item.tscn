@@ -14,4 +14,7 @@ script = ExtResource("1_tihr8")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_q4ock")
 
+[node name="SpriteChangeTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -6,15 +6,14 @@ extends Area2D
 @export var open_door_scene_path: String = ""  # Path to the open door scene
 var unlocked: bool = false
 
-@onready var sprite: Sprite2D = $Sprite2D  # Reference to the Sprite2D node
+@onready var sprite: Sprite2D = $Sprite2D
 
 # Define individual sprites for each item type
-@export var sprite_for_keys: Texture = preload("res://icon.svg")  # Example path for keys
-@export var sprite_for_wrench: Texture = preload("res://Sprites/Placeholder/Picture.png")  # Example path for wrench
+var sprite_for_keys: Texture2D = preload("res://icon.svg")  # Example path for keys
+var sprite_for_wrench: Texture2D = preload("res://Sprites/Placeholder/Picture.png")  # Example path for wrench
 
 func _ready():
 	print("Interactable ready: %s" % self.name)
-	# Set the initial sprite based on the required item type
 	update_sprite_based_on_required_item()
 
 func _on_input_event(_viewport, event, _shape_idx):
@@ -25,7 +24,6 @@ func _on_input_event(_viewport, event, _shape_idx):
 func use_item(item_type: int) -> bool:
 	if required_item_type == item_type:
 		unlocked = true
-		# Update sprite based on the item used
 		update_sprite(item_type)
 		print("Object unlocked with item: %s" % item_type)
 		if open_door_scene_path != "":
@@ -59,11 +57,10 @@ func change_to_open_door_scene() -> void:
 		if open_door_scene:
 			var new_scene_instance = open_door_scene.instantiate()
 			if new_scene_instance:
-				# Set the position of the new scene instance to match the old interactable
 				new_scene_instance.position = self.position
-				new_scene_instance.rotation = self.rotation  # Copy rotation if needed
+				new_scene_instance.rotation = self.rotation
 				self.get_parent().add_child(new_scene_instance)
-				self.queue_free()  # Remove the old interactable
+				self.queue_free()
 		else:
 			print("Open door scene not found: %s" % open_door_scene_path)
 	else:
