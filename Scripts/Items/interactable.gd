@@ -28,6 +28,7 @@ func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		GlobalManager.set_current_interactable(self)
 		print("Interactable selected: %s" % self.name)
+		show_required_item_dialogue()  # Show required item message when selected
 
 func use_item(item_type: int) -> bool:
 	if required_item_type == item_type:
@@ -40,10 +41,12 @@ func use_item(item_type: int) -> bool:
 			change_to_unlocked_item_scene()
 		return true
 	else:
-		# Show the appropriate message based on the required item type
-		var message = dialogue_messages.get(required_item_type, "This is the wrong item.")
-		DialogueUi.show_dialogue(message)
+		DialogueUi.show_dialogue("This is the wrong item.")
 		return false
+
+func show_required_item_dialogue() -> void:
+	var message = dialogue_messages.get(required_item_type, "I need something to unlock this.")
+	DialogueUi.show_dialogue(message)
 
 func update_sprite(item_type: int) -> void:
 	match item_type:

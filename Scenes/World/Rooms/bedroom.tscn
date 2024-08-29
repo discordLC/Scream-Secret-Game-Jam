@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://de8nt5i6mseu6"]
+[gd_scene load_steps=4 format=3 uid="uid://de8nt5i6mseu6"]
 
 [ext_resource type="PackedScene" uid="uid://di3t6mulylhuc" path="res://Scenes/Interactables/door.tscn" id="1_ns4vf"]
+[ext_resource type="PackedScene" uid="uid://w3cp5vhwwqp" path="res://Scenes/Interactables/item_interactable.tscn" id="2_mtlai"]
+[ext_resource type="PackedScene" uid="uid://buakxy8kmqr2d" path="res://Scenes/Interactables/clickable_item.tscn" id="3_iy76m"]
 
 [node name="Bedroom" type="Node2D"]
 
 [node name="Door" parent="." instance=ExtResource("1_ns4vf")]
 position = Vector2(206, 368)
 target_scene = "res://Scenes/World/Rooms/upstairs_hallway.tscn"
+
+[node name="ItemInteractable" parent="." instance=ExtResource("2_mtlai")]
+position = Vector2(1280, 584)
+
+[node name="ClickableItem" parent="." instance=ExtResource("3_iy76m")]
+position = Vector2(440, 813)
+item_type = 1

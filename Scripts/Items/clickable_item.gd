@@ -17,7 +17,7 @@ var click_messages = {
 func _ready():
 	match item_type:
 		ItemType.KEYS:
-			sprite.texture = preload("res://icon.svg")
+			sprite.texture = preload("res://Sprites/Icons/icon.0.png")
 		ItemType.WRENCH:
 			sprite.texture = preload("res://Sprites/Icons/icon.1.png")
 	
