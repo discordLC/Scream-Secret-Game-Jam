@@ -9,7 +9,7 @@ var unlocked: bool = false
 @onready var hover_material: ShaderMaterial = preload("res://Materials/Shader/outline.tres")
 
 var sprite_for_keys: Texture2D = preload("res://icon.svg")
-var sprite_for_wrench: Texture2D = preload("res://Sprites/Placeholder/Picture.png")
+var sprite_for_wrench: Texture2D = preload("res://Sprites/Items/closed_vent.png")
 
 var stored_position: Vector2
 var stored_rotation: float

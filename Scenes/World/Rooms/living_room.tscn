@@ -1,9 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7c1l3xkouwoc"]
+[gd_scene load_steps=4 format=3 uid="uid://b7c1l3xkouwoc"]
 
 [ext_resource type="PackedScene" uid="uid://di3t6mulylhuc" path="res://Scenes/Interactables/door.tscn" id="1_6jjdj"]
+[ext_resource type="Texture2D" uid="uid://dgd22wqvitpl1" path="res://Sprites/Rooms/living room.png" id="1_ij47d"]
+[ext_resource type="PackedScene" uid="uid://buakxy8kmqr2d" path="res://Scenes/Interactables/clickable_item.tscn" id="3_cj4r7"]
 
 [node name="Living Room" type="Node2D"]
 
+[node name="LivingRoom" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(959, 539)
+scale = Vector2(0.40125, 0.4)
+texture = ExtResource("1_ij47d")
+
 [node name="Door" parent="." instance=ExtResource("1_6jjdj")]
-position = Vector2(915, 215)
+position = Vector2(1335, 431)
 target_scene = "res://Scenes/World/Rooms/upstairs_hallway.tscn"
+
+[node name="ClickableItem" parent="." instance=ExtResource("3_cj4r7")]
+position = Vector2(1259, 891)
+item_type = 1

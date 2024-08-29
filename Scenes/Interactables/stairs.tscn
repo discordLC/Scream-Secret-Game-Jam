@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp6nynas3khex"]
+
+[ext_resource type="Script" path="res://Scenes/Interactables/stairs.gd" id="1_opxy3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cj1ct"]
+size = Vector2(339, 136)
+
+[node name="Stairs" type="Area2D"]
+script = ExtResource("1_opxy3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cj1ct")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

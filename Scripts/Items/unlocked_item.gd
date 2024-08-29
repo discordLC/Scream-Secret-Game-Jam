@@ -1,7 +1,7 @@
 # res://Scripts/Items/unlocked_item.gd
 extends Area2D
 
-var scene_path: String = "res://Scenes/World/Rooms/room_2.tscn"
+var scene_path: String = "res://Scenes/World/Rooms/vent_room.tscn"
 @onready var hover_material: ShaderMaterial = preload("res://Materials/Shader/outline.tres")
 
 func _on_input_event(_viewport, event, _shape_idx):

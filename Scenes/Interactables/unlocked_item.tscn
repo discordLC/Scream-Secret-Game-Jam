@@ -1,20 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://sdn61lq0ohjh"]
 
 [ext_resource type="Script" path="res://Scripts/Items/unlocked_item.gd" id="1_uphle"]
-[ext_resource type="Texture2D" uid="uid://c0nc8ecse5pg3" path="res://icon.svg" id="2_wi1u0"]
+[ext_resource type="Texture2D" uid="uid://btnjrkh777gbj" path="res://Sprites/Items/open_vent.png" id="2_t4qkl"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8osdv"]
-size = Vector2(130, 330)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0wn2"]
+size = Vector2(93, 143)
 
 [node name="UnlockedItem" type="Area2D"]
 script = ExtResource("1_uphle")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1, 2.58594)
-texture = ExtResource("2_wi1u0")
+texture = ExtResource("2_t4qkl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_8osdv")
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_u0wn2")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

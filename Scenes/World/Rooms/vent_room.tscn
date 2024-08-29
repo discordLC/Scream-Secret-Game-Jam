@@ -13,8 +13,10 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_8otr4")
 
 [node name="ClickableItem" parent="." instance=ExtResource("2_aqb0a")]
+z_index = 1
 position = Vector2(868, 714)
 
 [node name="BackUI" parent="." instance=ExtResource("3_cf715")]
+z_index = 1
 position = Vector2(128, 130)
 target_scene = "res://Scenes/World/Rooms/bedroom.tscn"
