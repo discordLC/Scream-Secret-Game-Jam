@@ -34,7 +34,7 @@ func use_item(item_type: int) -> bool:
 			change_to_unlocked_item_scene()
 		return true
 	else:
-		print("Item %s is not the right item" % item_type)
+		DialogueUi.show_dialogue("This is the wrong item.")
 		return false
 
 func update_sprite(item_type: int) -> void:

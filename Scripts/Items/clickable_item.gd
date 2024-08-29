@@ -19,7 +19,7 @@ func _ready():
 		ItemType.KEYS:
 			sprite.texture = preload("res://icon.svg")
 		ItemType.WRENCH:
-			sprite.texture = preload("res://Sprites/Items/icon.1.png")
+			sprite.texture = preload("res://Sprites/Icons/icon.1.png")
 	
 	click_message = click_messages.get(item_type, "Unknown item")
 	

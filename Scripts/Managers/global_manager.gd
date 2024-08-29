@@ -5,8 +5,8 @@ var collected_items: Dictionary = {}  # Inventory
 var used_items: Dictionary = {}  # Track used items
 var unlocked_items: Dictionary = {}  # Track unlocked items
 var current_interactable: Area2D = null
+var shown_dialogues: Array = []
 
-@onready var inventory_ui = InventoryUi
 const MAX_INVENTORY_SIZE = 5
 
 enum ItemType {
@@ -14,10 +14,21 @@ enum ItemType {
 	WRENCH
 }
 
+# Array of dialogue options
+var dialogue_options: Array = [
+	"Where are the keys?",
+	"Was that always here?",
+	"How do I get out of here?",
+	"Something feels off",
+	"What was that?"
+]
+
 func _ready():
+	randomize()  # Initialize the random number generator
 	update_items_based_on_global_state()
-	if inventory_ui:
+	if InventoryUi:
 		update_inventory_ui()
+	transition_to_scene(get_tree().current_scene.name)
 
 func update_items_based_on_global_state():
 	var current_scene_name = get_tree().current_scene.name
@@ -33,8 +44,8 @@ func update_items_based_on_global_state():
 	update_inventory_ui()
 
 func update_inventory_ui() -> void:
-	if inventory_ui:
-		inventory_ui.update_inventory(collected_items)
+	if InventoryUi:
+		InventoryUi.update_inventory(collected_items)
 
 func add_item_to_inventory(item_type: int) -> void:
 	if collected_items.size() < MAX_INVENTORY_SIZE:
@@ -72,14 +83,43 @@ func register_unlocked_item(_interactable: Area2D, scene_path: String, position:
 		"rotation": rotation
 	})
 
+func show_random_dialogue() -> void:
+	# Create a new array to store available dialogues
+	var available_dialogues = []
+	
+	# Fill available_dialogues with items not in shown_dialogues
+	for dialogue in dialogue_options:
+		if not shown_dialogues.has(dialogue):
+			available_dialogues.append(dialogue)
+	
+	# If all dialogues have been shown, reset the list
+	if available_dialogues.size() == 0:
+		print("All dialogues have been shown. Resetting...")
+		reset_dialogue_state()
+		available_dialogues = dialogue_options  # Reset available dialogues to all options
+
+	# Ensure there are dialogues left to show
+	if available_dialogues.size() > 0:
+		var random_index = randi() % available_dialogues.size()
+		var selected_dialogue = available_dialogues[random_index]
+		DialogueUi.show_dialogue(selected_dialogue)
+		shown_dialogues.append(selected_dialogue)
+	else:
+		print("No more new dialogues to show")
+
+func reset_dialogue_state() -> void:
+	shown_dialogues.clear()  # Clear shown dialogues
+	print("Dialogue state reset")
+
 func transition_to_scene(scene_path: String) -> void:
 	var scene = load(scene_path) as PackedScene
 	if scene:
 		var tree = get_tree()
 		var new_scene_instance = scene.instantiate()
 		tree.root.add_child(new_scene_instance)
-		tree.current_scene.queue_free()
+		tree.current_scene.queue_free()  # Free the old scene
 		tree.current_scene = new_scene_instance
 		update_items_based_on_global_state()
+		show_random_dialogue()  # Show a random dialogue after transition
 	else:
 		print("Scene not found: %s" % scene_path)
