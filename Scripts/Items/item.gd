@@ -14,7 +14,7 @@ func _ready():
 	timer.one_shot = true
 	timer.connect("timeout", Callable(self, "_reset_sprite"))
 
-func _on_input_event(viewport: Viewport, event: InputEvent, shape_idx: int):
+func _on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int):
 	if event is InputEventMouseButton and event.pressed and not is_clicked:
 		_change_sprite()
 

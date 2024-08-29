@@ -1,4 +1,3 @@
-# res://Scripts/Managers/inventory_ui.gd
 extends Control
 
 const NUM_SLOTS = 5
@@ -26,7 +25,7 @@ func update_inventory(items: Dictionary) -> void:
 	for i in range(NUM_SLOTS):
 		if i < items.size():
 			var _item = items.keys()[i]
-			var icon_path = "res://icon.svg"
+			var icon_path = "res://Sprites/Items/icon." + str(_item) + ".png"
 			slots[i].texture_normal = load(icon_path)  # Changed to load()
 		else:
 			if i < slots.size():
