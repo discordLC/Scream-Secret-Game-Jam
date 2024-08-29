@@ -15,7 +15,7 @@ enum ItemType {
 }
 
 var dialogue_options: Array = [
-	"Where are the keys?",
+	"What happened?",
 	"Was that always here?",
 	"How do I get out of here?",
 	"Something feels off",
