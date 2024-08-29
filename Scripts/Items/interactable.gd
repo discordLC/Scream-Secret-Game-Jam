@@ -14,6 +14,12 @@ var sprite_for_wrench: Texture2D = preload("res://Sprites/Placeholder/Picture.pn
 var stored_position: Vector2
 var stored_rotation: float
 
+# Dialogue messages based on required item type
+var dialogue_messages: Dictionary = {
+	0: "I need my keys to unlock this!",
+	1: "I need a wrench to loosen the bolt!"
+}
+
 func _ready():
 	print("Interactable ready: %s" % self.name)
 	update_sprite_based_on_required_item()
@@ -34,7 +40,9 @@ func use_item(item_type: int) -> bool:
 			change_to_unlocked_item_scene()
 		return true
 	else:
-		DialogueUi.show_dialogue("This is the wrong item.")
+		# Show the appropriate message based on the required item type
+		var message = dialogue_messages.get(required_item_type, "This is the wrong item.")
+		DialogueUi.show_dialogue(message)
 		return false
 
 func update_sprite(item_type: int) -> void:

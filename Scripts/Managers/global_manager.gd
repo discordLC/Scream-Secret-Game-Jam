@@ -14,7 +14,6 @@ enum ItemType {
 	WRENCH
 }
 
-# Array of dialogue options
 var dialogue_options: Array = [
 	"Where are the keys?",
 	"Was that always here?",
@@ -23,12 +22,19 @@ var dialogue_options: Array = [
 	"What was that?"
 ]
 
+var valid_rooms: Array = [
+	"Living Room",
+	"Upstairs Hallway",
+	"Bedroom"
+]
+
 func _ready():
-	randomize()  # Initialize the random number generator
+	randomize()
 	update_items_based_on_global_state()
 	if InventoryUi:
 		update_inventory_ui()
 	transition_to_scene(get_tree().current_scene.name)
+
 
 func update_items_based_on_global_state():
 	var current_scene_name = get_tree().current_scene.name
@@ -84,28 +90,38 @@ func register_unlocked_item(_interactable: Area2D, scene_path: String, position:
 	})
 
 func show_random_dialogue() -> void:
-	# Create a new array to store available dialogues
-	var available_dialogues = []
+	var current_scene_name = get_tree().current_scene.name
+	print("Current scene: %s" % current_scene_name)
 	
-	# Fill available_dialogues with items not in shown_dialogues
-	for dialogue in dialogue_options:
-		if not shown_dialogues.has(dialogue):
-			available_dialogues.append(dialogue)
-	
-	# If all dialogues have been shown, reset the list
-	if available_dialogues.size() == 0:
-		print("All dialogues have been shown. Resetting...")
-		reset_dialogue_state()
-		available_dialogues = dialogue_options  # Reset available dialogues to all options
+	# Check if the current scene is a valid room
+	if valid_rooms.has(current_scene_name):
+		print("Current scene is a valid room for dialogue.")
+		
+		# Create a new array to store available dialogues
+		var available_dialogues = []
+		
+		# Fill available_dialogues with items not in shown_dialogues
+		for dialogue in dialogue_options:
+			if not shown_dialogues.has(dialogue):
+				available_dialogues.append(dialogue)
+		
+		# If all dialogues have been shown, reset the list
+		if available_dialogues.size() == 0:
+			print("All dialogues have been shown. Resetting...")
+			reset_dialogue_state()
+			available_dialogues = dialogue_options  # Reset available dialogues to all options
 
-	# Ensure there are dialogues left to show
-	if available_dialogues.size() > 0:
-		var random_index = randi() % available_dialogues.size()
-		var selected_dialogue = available_dialogues[random_index]
-		DialogueUi.show_dialogue(selected_dialogue)
-		shown_dialogues.append(selected_dialogue)
+		# Ensure there are dialogues left to show
+		if available_dialogues.size() > 0:
+			var random_index = randi() % available_dialogues.size()
+			var selected_dialogue = available_dialogues[random_index]
+			DialogueUi.show_dialogue(selected_dialogue)
+			shown_dialogues.append(selected_dialogue)
+		else:
+			print("No more new dialogues to show")
 	else:
-		print("No more new dialogues to show")
+		print("Current scene is not a valid room for dialogue.")
+
 
 func reset_dialogue_state() -> void:
 	shown_dialogues.clear()  # Clear shown dialogues
@@ -120,6 +136,6 @@ func transition_to_scene(scene_path: String) -> void:
 		tree.current_scene.queue_free()  # Free the old scene
 		tree.current_scene = new_scene_instance
 		update_items_based_on_global_state()
-		show_random_dialogue()  # Show a random dialogue after transition
+		show_random_dialogue()  # Ensure dialogue is triggered after transition
 	else:
 		print("Scene not found: %s" % scene_path)

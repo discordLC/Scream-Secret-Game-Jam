@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://buq7sopwk16xv"]
+
+[ext_resource type="PackedScene" uid="uid://di3t6mulylhuc" path="res://Scenes/Interactables/door.tscn" id="1_x7nrx"]
+
+[node name="Upstairs Hallway" type="Node2D"]
+
+[node name="BedroomDoor" parent="." instance=ExtResource("1_x7nrx")]
+position = Vector2(498, 323)
+target_scene = "res://Scenes/World/Rooms/bedroom.tscn"
+
+[node name="LivingRoomDoor" parent="." instance=ExtResource("1_x7nrx")]
+position = Vector2(916, 333)
+target_scene = "res://Scenes/World/Rooms/living_room.tscn"
