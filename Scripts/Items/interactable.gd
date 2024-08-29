@@ -8,7 +8,7 @@ var unlocked: bool = false
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hover_material: ShaderMaterial = preload("res://Materials/Shader/outline.tres")
 
-var sprite_for_keys: Texture2D = preload("res://icon.svg")
+var sprite_for_keys: Texture2D = preload("res://Sprites/Items/THEWAYOUT.png")
 var sprite_for_wrench: Texture2D = preload("res://Sprites/Items/closed_vent.png")
 
 var stored_position: Vector2

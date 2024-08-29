@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7c1l3xkouwoc"]
+[gd_scene load_steps=5 format=3 uid="uid://b7c1l3xkouwoc"]
 
 [ext_resource type="PackedScene" uid="uid://di3t6mulylhuc" path="res://Scenes/Interactables/door.tscn" id="1_6jjdj"]
 [ext_resource type="Texture2D" uid="uid://dgd22wqvitpl1" path="res://Sprites/Rooms/living room.png" id="1_ij47d"]
 [ext_resource type="PackedScene" uid="uid://buakxy8kmqr2d" path="res://Scenes/Interactables/clickable_item.tscn" id="3_cj4r7"]
+[ext_resource type="PackedScene" uid="uid://w3cp5vhwwqp" path="res://Scenes/Interactables/item_interactable.tscn" id="4_3gv5h"]
 
 [node name="Living Room" type="Node2D"]
 
@@ -19,3 +20,7 @@ target_scene = "res://Scenes/World/Rooms/upstairs_hallway.tscn"
 [node name="ClickableItem" parent="." instance=ExtResource("3_cj4r7")]
 position = Vector2(1259, 891)
 item_type = 1
+
+[node name="ItemInteractable" parent="." instance=ExtResource("4_3gv5h")]
+position = Vector2(183, 512)
+unlocked_item_scene_path = "res://Scenes/Interactables/THEWAYOUT.tscn"

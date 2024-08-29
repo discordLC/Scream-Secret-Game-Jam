@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://clqk0ptok1kxq"]
+[gd_scene load_steps=4 format=3 uid="uid://clqk0ptok1kxq"]
 
 [ext_resource type="Script" path="res://Scripts/Managers/main_menu.gd" id="1_wn1fd"]
+[ext_resource type="Texture2D" uid="uid://5tial47exymh" path="res://Sprites/Rooms/main_menu.png" id="2_1md76"]
 [ext_resource type="FontFile" uid="uid://cm2ins28vleki" path="res://Sprites/Font/BloodyModes-gwwYp.ttf" id="2_6p3xg"]
 
 [node name="MainMenu" type="Control"]
@@ -11,6 +12,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wn1fd")
+
+[node name="MainMenu" type="Sprite2D" parent="."]
+position = Vector2(941.5, 531.5)
+scale = Vector2(1.03698, 1.09722)
+texture = ExtResource("2_1md76")
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 1

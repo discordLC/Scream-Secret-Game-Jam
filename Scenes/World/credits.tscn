@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnlfrrd0gkty4"]
+[gd_scene load_steps=4 format=3 uid="uid://dnlfrrd0gkty4"]
 
 [ext_resource type="Script" path="res://Scripts/Managers/credits.gd" id="1_565km"]
 [ext_resource type="FontFile" uid="uid://cm2ins28vleki" path="res://Sprites/Font/BloodyModes-gwwYp.ttf" id="1_cntal"]
+[ext_resource type="Texture2D" uid="uid://5tial47exymh" path="res://Sprites/Rooms/main_menu.png" id="2_ovsw4"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -11,6 +12,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_565km")
+
+[node name="MainMenu" type="Sprite2D" parent="."]
+position = Vector2(823.5, 612.5)
+scale = Vector2(1.14948, 1.14167)
+texture = ExtResource("2_ovsw4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

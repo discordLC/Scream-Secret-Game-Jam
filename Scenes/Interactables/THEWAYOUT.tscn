@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4ytyrapwnx5k"]
+
+[ext_resource type="Script" path="res://Scripts/Items/thewayout.gd" id="1_e4psq"]
+[ext_resource type="Texture2D" uid="uid://cjf35gned85pp" path="res://Sprites/Items/Living_Room.png_Door_open.png" id="2_6ar0b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0wn2"]
+size = Vector2(583, 1174)
+
+[node name="UnlockedItem" type="Area2D"]
+script = ExtResource("1_e4psq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6ar0b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8.5, 1)
+shape = SubResource("RectangleShape2D_u0wn2")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
